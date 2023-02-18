@@ -1,16 +1,15 @@
-use serde::{Deserialize, Serialize};
 use crate::command::Command;
+use serde::{Deserialize, Serialize};
 
-// #[command("cmd")]
+// #[command(name = "cmd")]
 #[derive(Clone, Deserialize, Serialize)]
 pub struct Cmd1 {
     arg1: String,
 }
 
-pub const CMD1: &str = "cmd";
-
 impl Command for Cmd1 {
     type Err = ();
+    const CMD: &'static str = "cmd";
 
     fn run(&self) -> Result<(), Self::Err> {
         println!("cmd1 with arg: {}", self.arg1);
